@@ -1,0 +1,17 @@
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\bin\Debug\TheScheduleCalls.exe.config
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\bin\Debug\TheScheduleCalls.exe
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\bin\Debug\TheScheduleCalls.pdb
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.csprojAssemblyReference.cache
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\MainWindow.g.cs
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\App.g.cs
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls_MarkupCompile.cache
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls_MarkupCompile.lref
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\MainWindow.baml
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.g.resources
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.Properties.Resources.resources
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.csproj.GenerateResource.cache
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.csproj.CoreCompileInputs.cache
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.exe
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.pdb
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\CreateSchedule.g.cs
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\CreateSchedule.baml
