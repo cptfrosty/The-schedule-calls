@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -33,6 +34,8 @@ namespace TheScheduleCalls
         /// Путь к учебной тревоге
         /// </summary>
         public static string PathTrainingAllertCall { get; set; }
+
+        private static SoundPlayer sound = new SoundPlayer();
 
         /// <summary>
         /// Активное расписание
@@ -66,6 +69,27 @@ namespace TheScheduleCalls
                 PathSoundCall = xdoc.Element("Setting").Element("PathSoundCall").Value;
                 PathTrainingAllertCall = xdoc.Element("Setting").Element("PathTrainingAllertCall").Value;
             }
+        }
+
+        /// <summary>
+        /// Запуск звука звонка
+        /// </summary>
+        public static void PlaySoundScheduleCall()
+        {
+            sound.SoundLocation = PathSoundCall;
+            sound.Play();
+        }
+
+        public static void PlaySoundTrainingAllertCall()
+        {
+            sound.SoundLocation = PathTrainingAllertCall;
+            sound.Play();
+        }
+
+        public static void PlaySound(string path)
+        {
+            sound.SoundLocation = path;
+            sound.Play();
         }
     }
 }

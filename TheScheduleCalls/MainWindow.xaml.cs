@@ -35,6 +35,9 @@ namespace TheScheduleCalls
         public bool isReducedScheduleExists = false;
         public bool isSuterdayExists = false;
 
+        //Последний звонок
+        public DateTime lastCall = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 00,00,00);
+
         public List<TextBlock> tb_mainSchedule = new List<TextBlock>(); 
 
         public MainWindow()
@@ -81,7 +84,7 @@ namespace TheScheduleCalls
 
         private void testSoundCall_Click(object sender, RoutedEventArgs e)
         {
-
+            GlobalSetting.PlaySound(tb_SoundCall.Text);
         }
 
         private void reviewTreningAlertSound_Click(object sender, RoutedEventArgs e)
@@ -99,7 +102,7 @@ namespace TheScheduleCalls
 
         private void testSoundAlert_Click(object sender, RoutedEventArgs e)
         {
-
+            GlobalSetting.PlaySound(tb_TreningAlert.Text);
         }
 
         private void reviewMainSchedule_Click(object sender, RoutedEventArgs e)
@@ -175,6 +178,9 @@ namespace TheScheduleCalls
             };
         }
 
+        /// <summary>
+        /// Таймер, который отображает время
+        /// </summary>
         void ShowTime()
         {
             var timer = new System.Windows.Threading.DispatcherTimer();
@@ -182,39 +188,93 @@ namespace TheScheduleCalls
             timer.IsEnabled = true;
             timer.Tick += (o, e) => {
                 timeNow.Text = $"ВРЕМЯ СЕЙЧАС: {DateTime.Now.ToString("HH:mm:ss")}";
-
+                if (isMainSchedule && mainSchedule.isExists)
+                {
+                    CheckScheduleCalls(mainSchedule);
+                }
+                else if (isReducedSchedule && reducedSchedule.isExists)
+                {
+                    CheckScheduleCalls(reducedSchedule);
+                }
+                else if (isSuterdaySchedule && saturdaySchedule.isExists)
+                {
+                    CheckScheduleCalls(saturdaySchedule);
+                }
             };
             timer.Start();
         }
 
+        /// <summary>
+        /// Проверка звонков
+        /// </summary>
+        void CheckScheduleCalls(Schedule schedule)
+        {
+            for (int i = 0; i < schedule.timeCalls.Count; i++)
+            {
+                if((schedule.timeCalls[i].Hour == DateTime.Now.Hour && schedule.timeCalls[i].Minute == DateTime.Now.Minute) &&
+                    (schedule.timeCalls[i].Minute != lastCall.Minute))
+                {
+                    GlobalSetting.PlaySoundScheduleCall();
+                    lastCall = schedule.timeCalls[i];
+                }
+            }
+        }
+
         private void rb_mainSchedule_Checked(object sender, RoutedEventArgs e)
         {
-            rb_reducedSchedule.IsChecked = false;
-            rb_saturdaySchedule.IsChecked = false;
+            if (!mainSchedule.isExists)
+            {
+                MessageBox.Show("Укажите сначала ссылку на расписание");
+                rb_mainSchedule.IsChecked = false;
+            }
+            else
+            {
 
-            isMainSchedule = true;
-            isReducedSchedule = false;
-            isSuterdaySchedule = false;
+                rb_reducedSchedule.IsChecked = false;
+                rb_saturdaySchedule.IsChecked = false;
+
+                isMainSchedule = true;
+                isReducedSchedule = false;
+                isSuterdaySchedule = false;
+            }
         }
 
         private void rb_reducedSchedule_Checked(object sender, RoutedEventArgs e)
         {
-            rb_mainSchedule.IsChecked = false;
-            rb_saturdaySchedule.IsChecked = false;
+            if (!reducedSchedule.isExists)
+            {
+                MessageBox.Show("Укажите сначала ссылку на расписание");
+                rb_reducedSchedule.IsChecked = false;
+            }
+            else
+            {
 
-            isMainSchedule = false;
-            isReducedSchedule = true;
-            isSuterdaySchedule = false;
+                rb_mainSchedule.IsChecked = false;
+                rb_saturdaySchedule.IsChecked = false;
+
+                isMainSchedule = false;
+                isReducedSchedule = true;
+                isSuterdaySchedule = false;
+            }
         }
 
         private void rb_saturdaySchedule_Checked(object sender, RoutedEventArgs e)
         {
-            rb_mainSchedule.IsChecked = false;
-            rb_reducedSchedule.IsChecked = false;
+            if (!saturdaySchedule.isExists)
+            {
+                MessageBox.Show("Укажите сначала ссылку на расписание");
+                rb_saturdaySchedule.IsChecked = false;
+            }
+            else
+            {
 
-            isMainSchedule = false;
-            isReducedSchedule = false;
-            isSuterdaySchedule = true;
+                rb_mainSchedule.IsChecked = false;
+                rb_reducedSchedule.IsChecked = false;
+
+                isMainSchedule = false;
+                isReducedSchedule = false;
+                isSuterdaySchedule = true;
+            }
         }
     }
 }

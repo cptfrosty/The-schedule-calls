@@ -13,7 +13,8 @@ namespace TheScheduleCalls
     {
         public List<DateTime> timeCalls = new List<DateTime>();
         public List<String> stringCalls = new List<string>();
-        public bool isActive;
+        //public bool isActive = false;
+        public bool isExists = false;
 
         /// <summary>
         /// Парсинг документа XML
@@ -23,6 +24,7 @@ namespace TheScheduleCalls
         {
             if (System.IO.File.Exists(path))
             {
+                isExists = true;
                 XDocument xDoc = XDocument.Load(path);
                 XElement schedule = xDoc.Element("Schedule");
 

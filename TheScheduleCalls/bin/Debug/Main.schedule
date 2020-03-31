@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schedule>
+  <pair>
+    <start>11:26:00</start>
+    <end>11:27:00</end>
+  </pair>
+  <pair>
+    <start>11:28:00</start>
+    <end>11:29:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+  <pair>
+    <start>00:00:00</start>
+    <end>00:00:00</end>
+  </pair>
+</Schedule>
