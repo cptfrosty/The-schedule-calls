@@ -14,6 +14,10 @@ namespace TheScheduleCalls
         public List<DateTime> timeCalls = new List<DateTime>();
         public List<String> stringCalls = new List<string>();
         //public bool isActive = false;
+
+        /// <summary>
+        /// Наличие пути к расписанию
+        /// </summary>
         public bool isExists = false;
 
         /// <summary>

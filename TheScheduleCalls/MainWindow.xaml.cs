@@ -46,6 +46,7 @@ namespace TheScheduleCalls
             GlobalSetting.LoadSetting();
             InitializeSetting();
             ShowTime();
+            TaskShedule.LoadTaskXML();
 
             if (System.IO.File.Exists("setting.s")){
                 mainSchedule.LoadFileXML(GlobalSetting.PathMainSchedule);
@@ -188,6 +189,29 @@ namespace TheScheduleCalls
             timer.IsEnabled = true;
             timer.Tick += (o, e) => {
                 timeNow.Text = $"ВРЕМЯ СЕЙЧАС: {DateTime.Now.ToString("HH:mm:ss")}";
+
+                #region //Если суббота, то переключить на субботнее расписание
+                if (DateTime.Now.DayOfWeek == DayOfWeek.Saturday && !GlobalSetting.isSaturday)
+                {
+                    GlobalSetting.isSaturday = true;
+
+                    rb_mainSchedule.IsChecked = false;
+                    rb_reducedSchedule.IsChecked = false;
+
+                    isMainSchedule = false;
+                    isReducedSchedule = false;
+                    isSuterdaySchedule = true;
+                }
+                else if (DateTime.Now.DayOfWeek != DayOfWeek.Saturday && GlobalSetting.isSaturday)
+                {
+                    GlobalSetting.isSaturday = false;
+                }
+                #endregion
+
+                //Проверка задач
+                CheckScheduleTasks(TaskShedule.Tasks);
+                //Конец проверки задач
+
                 if (isMainSchedule && mainSchedule.isExists)
                 {
                     CheckScheduleCalls(mainSchedule);
@@ -202,6 +226,51 @@ namespace TheScheduleCalls
                 }
             };
             timer.Start();
+        }
+
+        /// <summary>
+        /// Проверка задач
+        /// </summary>
+        /// <param name="tasks">лист задач</param>
+        void CheckScheduleTasks(List<Task> tasks)
+        {
+            for(int i = 0; i < tasks.Count; i++)
+            {
+                if(tasks[i].timeSwitch.Hour == DateTime.Now.Hour && tasks[i].timeSwitch.Minute == DateTime.Now.Minute)
+                {
+                    if(tasks[i].type == GlobalSetting.typeSheduleActive.mainSchedule)
+                    {
+                        rb_mainSchedule.IsChecked = true;
+                        rb_reducedSchedule.IsChecked = false;
+
+                        isMainSchedule = true;
+                        isReducedSchedule = false;
+                        isSuterdaySchedule = false;
+
+                        tasks.RemoveAt(i);
+                        TaskShedule.SaveTaskXML();
+                    }
+                    else if (tasks[i].type == GlobalSetting.typeSheduleActive.reducedSchedule)
+                    {
+                        rb_mainSchedule.IsChecked = false;
+                        rb_reducedSchedule.IsChecked = true;
+
+                        isMainSchedule = false;
+                        isReducedSchedule = true;
+                        isSuterdaySchedule = false;
+
+                        tasks.RemoveAt(i);
+                        TaskShedule.SaveTaskXML();
+                    }
+                    else if (tasks[i].type == GlobalSetting.typeSheduleActive.trainingAllertCall)
+                    {
+                        GlobalSetting.PlaySoundTrainingAllertCall();
+
+                        tasks.RemoveAt(i);
+                        TaskShedule.SaveTaskXML();
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -275,6 +344,27 @@ namespace TheScheduleCalls
                 isReducedSchedule = false;
                 isSuterdaySchedule = true;
             }
+        }
+
+        private void ShowTaskSchedule_click(object sender, RoutedEventArgs e)
+        {
+            TaskShedule taskShedule = new TaskShedule();
+            taskShedule.ShowDialog();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void InfoProgramm_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Перед использованием программы, перейдите во вкладку <Выбор настроек>");
+        }
+
+        private void AboutProgramm_click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Программа предназначена для управления звонками. Программа разработана студентами ГБ ПОУ ВПТ в качестве дипломного пректа");
         }
     }
 }

@@ -9,11 +9,12 @@
     <Grid>
         <Menu>
             <MenuItem Header="Файл">
-                <MenuItem Header="Выход"/>
+                <MenuItem Header="Выход" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem Header="Создать расписание" Click="CreateSchedule_Click"/>
-            <MenuItem Header="Справка"/>
-            <MenuItem Header="О программе"/>
+            <MenuItem Header="Задачи" Click="ShowTaskSchedule_click"/>
+            <MenuItem Header="Справка" Click="InfoProgramm_click"/>
+            <MenuItem Header="О программе" Click="AboutProgramm_click"/>
         </Menu>
         <Grid>
             <Grid.RowDefinitions>
@@ -155,20 +156,6 @@
                     </TabItem.Content>
                 </TabItem>
                 <!--КОНЕЦ СУББОТНЕГО РАСПИСАНИЯ-->
-
-                <!--НАЧАЛО УЧЕБНОЙ ТРЕВОГИ-->
-                <TabItem Header="Учебная тревога">
-                    <Canvas>
-                        <CheckBox Name="rb_trainingAlert" Content="Включить учебную тревогу" Canvas.Left="10" Canvas.Top="10"/>
-                        <TextBlock Text="Дата" Canvas.Left="10" Canvas.Top="30"/>
-                        <TextBlock Text="Время" Canvas.Left="10" Canvas.Top="80"/>
-                        <TextBlock Text="Формат времени: 10:00:00" Canvas.Left="125" Canvas.Top="101" Height="20" Foreground="Gray"/>
-                        <DatePicker Canvas.Left="10" Canvas.Top="51"/>
-                        <TextBox Height="20" Width="100" Canvas.Left="10" Canvas.Top="101"/>
-                        <Button Content="Сохранить" Canvas.Left="10" Canvas.Top="139"/>
-                    </Canvas>
-                </TabItem>
-                <!--КОНЕЦ УЧЕБНОЙ ТРЕВОГИ-->
 
                 <!--НАЧАЛО ВЫБОРА НАСТРОЕК-->
                 <TabItem Header="Выбор настроек">

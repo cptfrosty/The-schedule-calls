@@ -9,9 +9,9 @@ using System.Xml.Linq;
 
 namespace TheScheduleCalls
 {
-    class GlobalSetting
+    public class GlobalSetting
     {
-        public enum typeSheduleActive { mainSchedule, reducedSchedule, suterdaySchedule};
+        public enum typeSheduleActive { mainSchedule, reducedSchedule, suterdaySchedule, trainingAllertCall };
 
         //Пути к файлам
         /// <summary>
@@ -36,6 +36,11 @@ namespace TheScheduleCalls
         public static string PathTrainingAllertCall { get; set; }
 
         private static SoundPlayer sound = new SoundPlayer();
+
+        /// <summary>
+        /// Флаг суббота
+        /// </summary>
+        public static bool isSaturday = false;
 
         /// <summary>
         /// Активное расписание

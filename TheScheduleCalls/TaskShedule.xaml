@@ -1,0 +1,37 @@
+﻿<Window x:Class="TheScheduleCalls.TaskShedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheScheduleCalls"
+        mc:Ignorable="d"
+        Title="Настройка задач" Height="512" Width="341" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="102*"/>
+            <RowDefinition Height="379*"/>
+        </Grid.RowDefinitions>
+        <Canvas>
+            <TextBlock Text="День" FontSize="16" Canvas.Left="10" Canvas.Top="10"/>
+            <TextBlock Text="Месяц" FontSize="16" Canvas.Left="52" Canvas.Top="10"/>
+            <TextBox x:Name="tb_day" Width="37" Canvas.Left="10" Canvas.Top="31"/>
+            <TextBox x:Name="tb_month" Width="47" Canvas.Left="52" Canvas.Top="31"/>
+
+            <Button x:Name="addTask" Content="Добавить" Width="100" Height="20" Canvas.Left="225" Canvas.Top="72" Click="addTask_Click"/>
+
+            <RadioButton x:Name="rb_main" Content="Основное расписание" Canvas.Left="119" Canvas.Top="10" Click="HideTimeBox"/>
+            <RadioButton x:Name="rb_reduced" Content="Сокращённое расписание" Canvas.Left="119" Canvas.Top="30" Click="HideTimeBox"/>
+            <RadioButton x:Name="rb_trainingAllertCall" Content="Учебная тревога" Canvas.Left="119" Canvas.Top="50" Click="ShowTimeBox"/>
+
+            <TextBlock x:Name="tb_hour" Text="Часы" FontSize="16" Canvas.Left="10" Canvas.Top="50" Visibility="Hidden"/>
+            <TextBlock x:Name="tb_minutes" Text="Минуты" FontSize="16" Canvas.Left="52" Canvas.Top="50" Visibility="Hidden"/>
+            <TextBox x:Name="tb_hour_box" Width="37" Canvas.Left="10" Canvas.Top="72" Visibility="Hidden"/>
+            <TextBox x:Name="tb_minutes_box" Width="47" Canvas.Left="52" Canvas.Top="72" Visibility="Hidden"/>
+        </Canvas>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Name="sp_listTask">
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

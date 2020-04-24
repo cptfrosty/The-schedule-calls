@@ -15,3 +15,5 @@ C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheSche
 C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TheScheduleCalls.pdb
 C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\CreateSchedule.g.cs
 C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\CreateSchedule.baml
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TaskShedule.g.cs
+C:\Users\Frosty\source\repos\TheScheduleCalls\TheScheduleCalls\obj\Debug\TaskShedule.baml
