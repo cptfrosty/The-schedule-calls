@@ -155,7 +155,7 @@ namespace TheScheduleCalls
         /// </summary>
         private void UpdateMainSchedule()
         {
-            for(int i = 0; i < tb_mainSchedule.Count-1; i++)
+            for(int i = 0; i < tb_mainSchedule.Count; i++)
             {
                 tb_mainSchedule[i].Text = mainSchedule.stringCalls[i];
             }
